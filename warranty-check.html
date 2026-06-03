@@ -123,7 +123,11 @@ result.innerHTML = `
 
 <p><strong>Mobile:</strong> ${data.mobileNumber}</p>
 
-<p><strong>Expiry:</strong> ${new Date(data.expiryDate).toLocaleDateString()}</p>
+<p><strong>Expiry:</strong> ${new Date(data.expiryDate).toLocaleDateString('en-GB',{
+day:'2-digit',
+month:'long',
+year:'numeric'
+})}</p>
 `;
 
 }
