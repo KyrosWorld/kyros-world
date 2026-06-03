@@ -23,9 +23,9 @@ backdrop-filter:blur(12px);
 z-index:1000;
 }
 
-.logo{
-font-size:24px;
-font-weight:bold;
+.logo img{
+    height:60px;
+    width:auto;
 }
 
 nav a{
