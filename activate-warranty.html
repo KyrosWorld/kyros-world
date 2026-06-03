@@ -75,7 +75,9 @@ Activate Warranty
 </div>
 
 <script>
-
+if(!localStorage.getItem("sellerId")){
+    window.location.href="seller-login.html";
+}
 async function activateWarranty(){
 
 const payload = {
