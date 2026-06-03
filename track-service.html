@@ -123,7 +123,11 @@ result.innerHTML = `
 
 <p><strong>Status:</strong> ${data.status}</p>
 
-<p><strong>Created:</strong> ${new Date(data.createdDate).toLocaleDateString()}</p>
+<p><strong>Created:</strong> ${new Date(data.createdDate).toLocaleDateString('en-GB',{
+day:'2-digit',
+month:'long',
+year:'numeric'
+})}</p>
 `;
 
 }
