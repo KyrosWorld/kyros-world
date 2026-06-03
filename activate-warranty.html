@@ -78,6 +78,12 @@ Activate Warranty
 if(!localStorage.getItem("sellerId")){
     window.location.href="seller-login.html";
 }
+    window.onload = function(){
+
+document.getElementById("sellerId").value =
+localStorage.getItem("sellerId") || "";
+
+};
 async function activateWarranty(){
 
 const payload = {
