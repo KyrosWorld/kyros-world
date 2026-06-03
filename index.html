@@ -1,16 +1,192 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>KYROS WORLD</title>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KYROS WORLD</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#0b1220;
+color:white;
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+z-index:1000;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+.hero{
+height:100vh;
+background:url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1600&q=80');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero-content{
+background:rgba(0,0,0,0.55);
+padding:40px;
+border-radius:20px;
+max-width:700px;
+}
+
+.hero h1{
+font-size:55px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.buttons{
+display:flex;
+gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:14px 28px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:16px;
+text-decoration:none;
+}
+
+.primary{
+background:white;
+color:black;
+}
+
+.secondary{
+background:transparent;
+border:1px solid white;
+color:white;
+}
+
+.features{
+padding:80px 20px;
+text-align:center;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+max-width:1100px;
+margin:auto;
+margin-top:40px;
+}
+
+.card{
+background:#131c2f;
+padding:30px;
+border-radius:16px;
+}
+
+footer{
+padding:30px;
+text-align:center;
+background:#111827;
+}
+</style>
 </head>
-<body style="font-family:Arial;text-align:center;padding-top:100px;">
 
-    <h1>KYROS WORLD</h1>
+<body>
 
-    <p>Premium Watch Warranty Management System</p>
+<header>
+<div class="logo">KYROS WORLD</div>
 
-    <h3>Website Under Development</h3>
+<nav>
+<a href="#">Home</a>
+<a href="#">Warranty Check</a>
+<a href="#">Track Service</a>
+<a href="#">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+
+<h1>Premium Watch Warranty Management</h1>
+
+<p>
+Activate warranties, track service requests, and verify watch coverage instantly.
+</p>
+
+<div class="buttons">
+<a class="btn primary" href="#">Check Warranty</a>
+<a class="btn secondary" href="#">Activate Warranty</a>
+</div>
+
+</div>
+</section>
+
+<section class="features">
+
+<h2>Our Services</h2>
+
+<div class="feature-grid">
+
+<div class="card">
+<h3>Warranty Check</h3>
+<p>Verify active warranty status using serial number.</p>
+</div>
+
+<div class="card">
+<h3>Warranty Activation</h3>
+<p>Sellers can activate customer warranties instantly.</p>
+</div>
+
+<div class="card">
+<h3>Service Requests</h3>
+<p>Submit repair and maintenance requests online.</p>
+</div>
+
+<div class="card">
+<h3>Track Service</h3>
+<p>Track your repair status using ticket number.</p>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 KYROS WORLD. All Rights Reserved.
+</footer>
 
 </body>
 </html>
