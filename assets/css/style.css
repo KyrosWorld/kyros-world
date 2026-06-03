@@ -53,13 +53,12 @@ color:#d4af37;
 /* HERO */
 
 .hero{
-padding-top:100px;
-}
+height:100vh;
 
 background:
 linear-gradient(
 to right,
-rgba(0,0,0,0.75) 0%,
+rgba(0,0,0,0.82) 0%,
 rgba(0,0,0,0.55) 35%,
 rgba(0,0,0,0.20) 65%,
 rgba(0,0,0,0.05) 100%
@@ -68,11 +67,12 @@ url('../images/watchmaker.jpg');
 
 background-size:cover;
 background-position:center;
+background-repeat:no-repeat;
+
 display:flex;
 align-items:center;
-padding-left:80px;
+padding:120px 80px 80px;
 }
-
 .hero-content{
 max-width:700px;
 padding-top:120px;
