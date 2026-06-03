@@ -137,11 +137,11 @@ color:black;
 /* HERO FEATURES */
 
 .hero-features{
-display:flex;
-gap:40px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
 margin-top:60px;
 max-width:900px;
-flex-wrap:wrap;
 }
 
 .feature-item{
@@ -151,9 +151,10 @@ gap:15px;
 width:250px;
 }
 
-.feature-item i{
-font-size:32px;
-color:#d4af37;
+.feature-item{
+display:flex;
+align-items:flex-start;
+gap:15px;
 }
 
 .feature-item h4{
