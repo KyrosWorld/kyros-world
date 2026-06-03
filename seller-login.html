@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller Login - KYROS WORLD</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0b1220;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.container{
+width:90%;
+max-width:500px;
+background:#111c3a;
+padding:40px;
+border-radius:20px;
+}
+
+h1{
+margin-bottom:25px;
+text-align:center;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+background:white;
+color:black;
+}
+
+#result{
+margin-top:20px;
+padding:15px;
+border-radius:10px;
+display:none;
+background:#1a284f;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Seller Login</h1>
+
+<input type="text" id="sellerId" placeholder="Seller ID">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+async function login(){
+
+const payload = {
+action:"login",
+sellerId:document.getElementById("sellerId").value.trim(),
+password:document.getElementById("password").value.trim()
+};
+
+try{
+
+const response = await fetch(
+"https://kyros-api.madanchandkhute.workers.dev/",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify(payload)
+}
+);
+
+const data = await response.json();
+
+const result = document.getElementById("result");
+result.style.display="block";
+
+if(data.success){
+
+localStorage.setItem("sellerId",data.sellerId);
+localStorage.setItem("sellerName",data.sellerName);
+
+result.innerHTML =
+"✅ Login Successful";
+
+setTimeout(()=>{
+window.location.href="activate-warranty.html";
+},1000);
+
+}else{
+
+result.innerHTML =
+"❌ Invalid Seller ID or Password";
+
+}
+
+}catch(error){
+
+document.getElementById("result").style.display="block";
+document.getElementById("result").innerHTML =
+"❌ Error connecting server";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
 
