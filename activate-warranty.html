@@ -1,1 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activate Warranty - KYROS WORLD</title>
 
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#0b1220;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+margin:0;
+}
+
+.container{
+width:90%;
+max-width:700px;
+background:#131c2f;
+padding:30px;
+border-radius:20px;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+padding:15px;
+background:#1d2942;
+border-radius:10px;
+display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Activate Warranty</h1>
+
+<input id="serial" placeholder="Serial Number">
+<input id="customerName" placeholder="Customer Name">
+<input id="mobileNumber" placeholder="Mobile Number">
+<input id="sellerId" placeholder="Seller ID">
+<input id="purchaseDate" type="date">
+
+<button onclick="activateWarranty()">
+Activate Warranty
+</button>
+
+<div id="result" class="result"></div>
+
+</div>
+
+<script>
+
+async function activateWarranty(){
+
+const payload = {
+serial: document.getElementById("serial").value.trim(),
+customerName: document.getElementById("customerName").value.trim(),
+mobileNumber: document.getElementById("mobileNumber").value.trim(),
+sellerId: document.getElementById("sellerId").value.trim(),
+purchaseDate: document.getElementById("purchaseDate").value
+};
+
+try{
+
+const response = await fetch(
+"https://script.google.com/macros/s/AKfycbxjp8e-tsIpI78Win2i7WL3AhwFYvTKaqX52eTvovFioZAB2JXkL6sAWGfOY8LYkizj/exec",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body: JSON.stringify(payload)
+}
+);
+
+const data = await response.json();
+
+const result = document.getElementById("result");
+
+result.style.display = "block";
+
+if(data.success){
+result.innerHTML =
+"<strong>✅ Warranty Activated Successfully</strong>";
+}else{
+result.innerHTML =
+"<strong>❌ " + data.message + "</strong>";
+}
+
+}catch(error){
+
+document.getElementById("result").style.display="block";
+
+document.getElementById("result").innerHTML =
+"<strong>❌ Error connecting server</strong>";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
