@@ -137,17 +137,17 @@ color:black;
 /* HERO FEATURES */
 
 .hero-features{
-display:flex;
-gap:40px;
-margin-top:50px;
-flex-wrap:wrap;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+margin-top:60px;
+max-width:900px;
 }
 
 .feature-item{
 display:flex;
 align-items:flex-start;
 gap:15px;
-min-width:220px;
 }
 
 .feature-item i{
