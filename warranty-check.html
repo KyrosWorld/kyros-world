@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warranty Check - KYROS WORLD</title>
 
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#0b1220;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+margin:0;
+}
+
+.container{
+width:90%;
+max-width:700px;
+background:#131c2f;
+padding:30px;
+border-radius:20px;
+}
+
+input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+margin-top:15px;
+margin-bottom:15px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+.result{
+margin-top:25px;
+padding:20px;
+background:#1d2942;
+border-radius:12px;
+display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Warranty Check</h1>
+
+<input
+id="serial"
+type="text"
+placeholder="Enter Serial Number (KYR-2026-0001)"
+>
+
+<button onclick="checkWarranty()">
+Check Warranty
+</button>
+
+<div id="result" class="result"></div>
+
+</div>
+
+<script>
+
+async function checkWarranty(){
+
+const serial =
+document.getElementById("serial").value.trim();
+
+if(!serial){
+alert("Please enter serial number");
+return;
+}
+
+const url =
+"https://script.google.com/macros/s/AKfycbxjp8e-tsIpI78Win2i7WL3AhwFYvTKaqX52eTvovFioZAB2JXkL6sAWGfOY8LYkizj/exec?serial="
++ encodeURIComponent(serial);
+
+try{
+
+const response = await fetch(url);
+const data = await response.json();
+
+const result =
+document.getElementById("result");
+
+if(data.error){
+
+result.style.display="block";
+result.innerHTML =
+"<strong>"+data.error+"</strong>";
+
+return;
+}
+
+result.style.display="block";
+
+result.innerHTML = `
+<h3>Warranty Details</h3>
+
+<p><strong>Serial:</strong> ${data.serial}</p>
+
+<p><strong>Model:</strong> ${data.model}</p>
+
+<p><strong>Status:</strong> ${data.status}</p>
+
+<p><strong>Customer:</strong> ${data.customerName}</p>
+
+<p><strong>Mobile:</strong> ${data.mobileNumber}</p>
+
+<p><strong>Expiry:</strong> ${data.expiryDate}</p>
+`;
+
+}
+catch(err){
+
+alert("Error connecting API");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
