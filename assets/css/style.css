@@ -28,7 +28,7 @@ z-index:1000;
 }
 
 .logo img{
-height:60px;
+height:65px;
 width:auto;
 }
 
@@ -118,7 +118,7 @@ font-weight:bold;
 }
 
 .primary{
-background:white;
+background:#d4af37;
 color:black;
 }
 
@@ -268,6 +268,7 @@ display:block;
 .service-link:hover .service-card{
 transform:translateY(-8px);
 border-color:#d4af37;
+box-shadow:0 10px 30px rgba(212,175,55,0.15);
 }
 
 .service-card .arrow{
@@ -328,8 +329,9 @@ font-size:24px;
 /* FOOTER */
 
 footer{
-background:black;
-padding:40px;
+background:#030303;
+border-top:1px solid rgba(212,175,55,0.15);
+padding:30px;
 text-align:center;
 color:#9ca3af;
 }
