@@ -84,13 +84,19 @@ padding-top:120px;
 display:block;
 font-size:14px;
 letter-spacing:5px;
-color:#d1d5db;
+color:#d4af37;
 margin-bottom:20px;
+font-weight:500;
 }
 
 .hero h1{
 font-size:80px;
 line-height:1.1;
+font-weight:700;
+}
+
+.gold{
+color:#d4af37;
 }
 
 .hero p{
