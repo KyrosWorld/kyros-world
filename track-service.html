@@ -1,70 +1,192 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Track Service - KYROS WORLD</title>
 
 <style>
-body{
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Arial,sans-serif;
-background:#0b1220;
-color:white;
+}
+
+body{
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-min-height:100vh;
-margin:0;
+padding:20px;
+
+background:
+linear-gradient(
+to right,
+rgba(0,0,0,0.85),
+rgba(0,0,0,0.55)
+),
+url('assets/images/watchmaker.jpg');
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+color:white;
 }
 
 .container{
-width:90%;
+width:100%;
 max-width:700px;
-background:#131c2f;
-padding:30px;
-border-radius:20px;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(212,175,55,0.15);
+border-radius:25px;
+
+padding:40px;
+
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.logo{
+text-align:center;
+margin-bottom:20px;
+}
+
+.logo img{
+height:70px;
+width:auto;
+}
+
+h1{
+text-align:center;
+font-size:42px;
+margin-bottom:10px;
+font-weight:700;
+}
+
+.gold{
+color:#d4af37;
+}
+
+.subtitle{
+text-align:center;
+color:#cbd5e1;
+margin-bottom:30px;
+line-height:1.6;
 }
 
 input{
 width:100%;
-padding:15px;
-border:none;
-border-radius:10px;
-margin-top:15px;
-margin-bottom:15px;
+padding:16px;
+
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
+
+border-radius:12px;
+
+color:white;
 font-size:16px;
+outline:none;
+}
+
+input::placeholder{
+color:#9ca3af;
+}
+
+input:focus{
+border-color:#d4af37;
+box-shadow:0 0 15px rgba(212,175,55,0.25);
 }
 
 button{
 width:100%;
-padding:15px;
+margin-top:18px;
+
+padding:16px;
+
 border:none;
-border-radius:10px;
-background:white;
+border-radius:12px;
+
+background:#d4af37;
+color:black;
+
+font-size:16px;
+font-weight:700;
+
 cursor:pointer;
-font-weight:bold;
+transition:.3s;
+}
+
+button:hover{
+transform:translateY(-2px);
 }
 
 .result{
-margin-top:25px;
-padding:20px;
-background:#1d2942;
-border-radius:12px;
 display:none;
+
+margin-top:25px;
+
+padding:25px;
+
+background:rgba(212,175,55,0.05);
+border:1px solid rgba(212,175,55,0.20);
+
+border-radius:15px;
 }
+
+.result h3{
+color:#d4af37;
+margin-bottom:15px;
+}
+
+.result p{
+margin-bottom:10px;
+line-height:1.7;
+}
+
+.back-home{
+display:block;
+text-align:center;
+margin-top:25px;
+
+color:#d4af37;
+text-decoration:none;
+font-size:18px;
+}
+
+.back-home:hover{
+text-decoration:underline;
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>Track Service</h1>
+<div class="logo">
+<img src="assets/images/logo.png" alt="KYROS WORLD">
+</div>
+
+<h1><span class="gold">Track</span> Service</h1>
+
+<p class="subtitle">
+Track your repair progress and service updates instantly
+</p>
 
 <input
 id="ticket"
 type="text"
 placeholder="Enter Ticket Number (SR-001)"
+
 >
 
 <button onclick="trackService()">
@@ -72,6 +194,10 @@ Track Service
 </button>
 
 <div id="result" class="result"></div>
+
+<a href="index.html" class="back-home">
+← Back to Home
+</a>
 
 </div>
 
@@ -102,8 +228,10 @@ document.getElementById("result");
 if(data.error){
 
 result.style.display="block";
+
 result.innerHTML =
-"<strong>"+data.error+"</strong>";
+`<h3>Result</h3>
+<p><strong>${data.error}</strong></p>`;
 
 return;
 }
