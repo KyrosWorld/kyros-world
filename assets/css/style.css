@@ -32,6 +32,10 @@ height:65px;
 width:auto;
 }
 
+<button class="menu-toggle">
+<i class="fa-solid fa-bars"></i>
+</button>
+
 nav{
 display:flex;
 align-items:center;
