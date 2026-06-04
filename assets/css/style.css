@@ -430,11 +430,25 @@ gap:10px;
 height:45px;
 }
 
+.menu-toggle{
+display:block;
+background:none;
+border:none;
+color:white;
+font-size:28px;
+cursor:pointer;
+}
+  
 nav{
+display:none;
+width:100%;
+flex-direction:column;
+align-items:center;
+padding-top:10px;
+}
+
+nav.active{
 display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:10px;
 }
 
 nav a{
