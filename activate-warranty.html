@@ -181,6 +181,8 @@ Seller ID: <span id="sellerDisplay"></span>
 
 <input id="mobileNumber" placeholder="Mobile Number">
 
+<input id="email" type="email" placeholder="Customer Email Address">
+
 <input id="sellerId" placeholder="Seller ID" readonly>
 
 <input id="purchaseDate" type="date">
@@ -231,6 +233,7 @@ const payload = {
 serial: document.getElementById("serial").value.trim(),
 customerName: document.getElementById("customerName").value.trim(),
 mobileNumber: document.getElementById("mobileNumber").value.trim(),
+email: document.getElementById("email").value.trim(),
 sellerId: document.getElementById("sellerId").value.trim(),
 purchaseDate: document.getElementById("purchaseDate").value
 };
