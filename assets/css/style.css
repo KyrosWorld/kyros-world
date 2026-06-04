@@ -259,7 +259,24 @@ margin-bottom:20px;
 margin-bottom:12px;
 font-size:24px;
 }
+.service-link{
+text-decoration:none;
+color:inherit;
+display:block;
+}
 
+.service-link:hover .service-card{
+transform:translateY(-8px);
+border-color:#d4af37;
+}
+
+.service-card .arrow{
+transition:0.3s;
+}
+
+.service-link:hover .arrow{
+transform:translateX(8px);
+}
 .service-card p{
 color:#d1d5db;
 line-height:1.6;
@@ -279,11 +296,6 @@ border-radius:20px;
 padding:30px;
 text-align:left;
 transition:0.3s;
-}
-
-.service-card:hover{
-transform:translateY(-8px);
-border-color:#d4af37;
 }
 
 /* YAHAN SE PASTE KARO */
