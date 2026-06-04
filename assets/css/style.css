@@ -32,6 +32,11 @@ height:65px;
 width:auto;
 }
 
+/* Desktop pe hidden */
+.menu-toggle{
+display:none;
+}
+
 nav{
 display:flex;
 align-items:center;
