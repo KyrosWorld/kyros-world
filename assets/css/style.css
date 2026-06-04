@@ -413,47 +413,104 @@ max-width:100%;
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media (max-width: 768px){
 
 header{
-padding:15px 20px;
+padding:12px 15px;
+flex-direction:column;
+gap:10px;
 }
 
 .logo img{
-height:55px;
+height:45px;
+}
+
+nav{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
 }
 
 nav a{
-margin-left:15px;
-font-size:14px;
+margin:0;
+font-size:13px;
 }
 
 .hero{
-padding:30px;
+height:auto;
+padding:140px 20px 60px;
 text-align:center;
 justify-content:center;
+background-position:center;
+}
+
+.hero-content{
+max-width:100%;
+padding-top:0;
+}
+
+.tagline{
+font-size:12px;
+letter-spacing:3px;
 }
 
 .hero h1{
-font-size:48px;
+font-size:42px;
+line-height:1.2;
 }
 
 .hero p{
 font-size:18px;
+line-height:1.6;
 }
 
 .buttons{
 justify-content:center;
+flex-direction:column;
+align-items:center;
+}
+
+.btn{
+width:100%;
+max-width:300px;
+text-align:center;
 }
 
 .hero-features{
-justify-content:center;
-gap:20px;
-font-size:16px;
+grid-template-columns:1fr;
+gap:25px;
+margin-top:40px;
 }
 
-.features h2{
-font-size:32px;
+.feature-item{
+width:100%;
+justify-content:center;
+text-align:center;
+flex-direction:column;
+align-items:center;
+}
+
+.services{
+padding:60px 20px;
+}
+
+.services h2{
+font-size:48px;
+}
+
+.services-grid{
+grid-template-columns:1fr;
+gap:20px;
+}
+
+.service-card{
+width:100%;
+}
+
+footer{
+padding:25px 15px;
+font-size:14px;
 }
 
 }
