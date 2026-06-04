@@ -325,6 +325,10 @@ border:1px solid rgba(212,175,55,0.25);
 .icon-box i{
 font-size:34px;
 color:#d4af37;
+line-height:1;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 /* FIR AAGE KA CSS */
