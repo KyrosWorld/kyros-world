@@ -1,97 +1,230 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Activate Warranty - KYROS WORLD</title>
 
 <style>
-body{
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Arial,sans-serif;
-background:#0b1220;
-color:white;
+}
+
+body{
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-min-height:100vh;
-margin:0;
+padding:20px;
+
+background:
+linear-gradient(
+to right,
+rgba(0,0,0,0.85),
+rgba(0,0,0,0.55)
+),
+url('assets/images/watchmaker.jpg');
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+color:white;
 }
 
 .container{
-width:90%;
-max-width:700px;
-background:#131c2f;
-padding:30px;
-border-radius:20px;
+width:100%;
+max-width:800px;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(212,175,55,0.15);
+border-radius:25px;
+
+padding:40px;
+
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.logo{
+text-align:center;
+margin-bottom:20px;
+}
+
+.logo img{
+height:70px;
+width:auto;
+}
+
+h1{
+text-align:center;
+font-size:42px;
+margin-bottom:10px;
+font-weight:700;
+}
+
+.gold{
+color:#d4af37;
+}
+
+.subtitle{
+text-align:center;
+color:#cbd5e1;
+margin-bottom:30px;
+line-height:1.6;
 }
 
 input{
 width:100%;
-padding:15px;
-margin-bottom:15px;
-border:none;
-border-radius:10px;
+padding:16px;
+
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
+
+border-radius:12px;
+
+color:white;
 font-size:16px;
+
+margin-bottom:18px;
+outline:none;
+}
+
+input:focus{
+border-color:#d4af37;
+box-shadow:0 0 15px rgba(212,175,55,0.25);
 }
 
 button{
 width:100%;
-padding:15px;
+padding:16px;
+
 border:none;
-border-radius:10px;
-background:white;
-font-weight:bold;
+border-radius:12px;
+
+background:#d4af37;
+color:black;
+
+font-size:16px;
+font-weight:700;
+
 cursor:pointer;
+transition:.3s;
 }
+
+button:hover{
+transform:translateY(-2px);
+}
+
+.logout-btn{
+margin-top:12px;
+background:#c62828;
+color:white;
+}
+
+.logout-btn:hover{
+transform:translateY(-2px);
+}
+
 .result{
-margin-top:20px;
-padding:15px;
-background:#1d2942;
-border-radius:10px;
 display:none;
+
+margin-top:25px;
+padding:25px;
+
+background:rgba(212,175,55,0.05);
+border:1px solid rgba(212,175,55,0.20);
+
+border-radius:15px;
+line-height:1.8;
 }
+
+.welcome{
+text-align:center;
+margin-bottom:25px;
+color:#d4af37;
+font-size:18px;
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>Activate Warranty</h1>
+<div class="logo">
+<img src="assets/images/logo.png" alt="KYROS WORLD">
+</div>
+
+<h1><span class="gold">Activate</span> Warranty</h1>
+
+<p class="subtitle">
+Register customer warranty and activate official coverage
+</p>
+
+<div class="welcome">
+Seller ID: <span id="sellerDisplay"></span>
+</div>
 
 <input id="serial" placeholder="Serial Number">
+
 <input id="customerName" placeholder="Customer Name">
+
 <input id="mobileNumber" placeholder="Mobile Number">
-<input id="sellerId" placeholder="Seller ID">
+
+<input id="sellerId" placeholder="Seller ID" readonly>
+
 <input id="purchaseDate" type="date">
 
 <button onclick="activateWarranty()">
 Activate Warranty
 </button>
-<button onclick="logout()" style="margin-top:10px;background:#ff4d4d;color:white;">
+
+<button onclick="logout()" class="logout-btn">
 Logout
 </button>
+
 <div id="result" class="result"></div>
 
 </div>
 
 <script>
-if(!localStorage.getItem("sellerId")){
-    window.location.href="seller-login.html";
-}
-    window.onload = function(){
 
-document.getElementById("sellerId").value =
+if(!localStorage.getItem("sellerId")){
+window.location.href="seller-login.html";
+}
+
+window.onload = function(){
+
+const sellerId =
 localStorage.getItem("sellerId") || "";
 
+document.getElementById("sellerId").value =
+sellerId;
+
+document.getElementById("sellerDisplay").innerText =
+sellerId;
+
 };
-    function logout(){
+
+function logout(){
 
 localStorage.clear();
 
-window.location.href = "seller-login.html";
+window.location.href =
+"seller-login.html";
 
 }
+
 async function activateWarranty(){
 
 const payload = {
@@ -105,28 +238,37 @@ purchaseDate: document.getElementById("purchaseDate").value
 try{
 
 const response = await fetch(
-  "https://kyros-api.madanchandkhute.workers.dev/",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(payload)
-  }
+"https://kyros-api.madanchandkhute.workers.dev/",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify(payload)
+}
 );
 
 const data = await response.json();
 
-const result = document.getElementById("result");
+const result =
+document.getElementById("result");
 
-result.style.display = "block";
+result.style.display="block";
 
 if(data.success){
+
 result.innerHTML =
-"<strong>✅ Warranty Activated Successfully</strong>";
+"<h3 style='color:#d4af37;'>Warranty Activated Successfully</h3>" +
+"<br>" +
+"<strong>Status:</strong> Active ✅";
+
 }else{
+
 result.innerHTML =
-"<strong>❌ " + data.message + "</strong>";
+"<strong>❌ " +
+data.message +
+"</strong>";
+
 }
 
 }catch(error){
