@@ -4,9 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Seller Login - KYROS WORLD</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -15,55 +17,143 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#0b1220;
-color:white;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-min-height:100vh;
+padding:20px;
+
+background:
+linear-gradient(
+to right,
+rgba(0,0,0,0.85),
+rgba(0,0,0,0.55)
+),
+url('assets/images/watchmaker.jpg');
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+color:white;
 }
 
 .container{
-width:90%;
+width:100%;
 max-width:500px;
-background:#111c3a;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(212,175,55,0.15);
+border-radius:25px;
+
 padding:40px;
-border-radius:20px;
+
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+.logo{
+text-align:center;
+margin-bottom:20px;
+}
+
+.logo img{
+height:70px;
+width:auto;
 }
 
 h1{
-margin-bottom:25px;
 text-align:center;
+font-size:42px;
+margin-bottom:10px;
+font-weight:700;
+}
+
+.gold{
+color:#d4af37;
+}
+
+.subtitle{
+text-align:center;
+color:#cbd5e1;
+margin-bottom:30px;
+line-height:1.6;
 }
 
 input{
 width:100%;
-padding:15px;
-margin-bottom:15px;
-border:none;
-border-radius:10px;
+padding:16px;
+
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
+
+border-radius:12px;
+
+color:white;
 font-size:16px;
+
+margin-bottom:18px;
+outline:none;
+}
+
+input::placeholder{
+color:#9ca3af;
+}
+
+input:focus{
+border-color:#d4af37;
+box-shadow:0 0 15px rgba(212,175,55,0.25);
 }
 
 button{
 width:100%;
-padding:15px;
+padding:16px;
+
 border:none;
-border-radius:10px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-background:white;
+border-radius:12px;
+
+background:#d4af37;
 color:black;
+
+font-size:16px;
+font-weight:700;
+
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:translateY(-2px);
 }
 
 #result{
-margin-top:20px;
-padding:15px;
-border-radius:10px;
 display:none;
-background:#1a284f;
+
+margin-top:20px;
+padding:20px;
+
+background:rgba(212,175,55,0.05);
+border:1px solid rgba(212,175,55,0.20);
+
+border-radius:15px;
+line-height:1.7;
 }
+
+.back-home{
+display:block;
+text-align:center;
+margin-top:25px;
+
+color:#d4af37;
+text-decoration:none;
+font-size:18px;
+}
+
+.back-home:hover{
+text-decoration:underline;
+}
+
 </style>
 
 </head>
@@ -72,15 +162,39 @@ background:#1a284f;
 
 <div class="container">
 
-<h1>Seller Login</h1>
+<div class="logo">
+<img src="assets/images/logo.png" alt="KYROS WORLD">
+</div>
 
-<input type="text" id="sellerId" placeholder="Seller ID">
+<h1><span class="gold">Seller</span> Login</h1>
 
-<input type="password" id="password" placeholder="Password">
+<p class="subtitle">
+Authorized sellers can activate warranties and manage customer registrations
+</p>
 
-<button onclick="login()">Login</button>
+<input
+type="text"
+id="sellerId"
+placeholder="Seller ID"
+
+>
+
+<input
+type="password"
+id="password"
+placeholder="Password"
+
+>
+
+<button onclick="login()">
+Login
+</button>
 
 <div id="result"></div>
+
+<a href="index.html" class="back-home">
+← Back to Home
+</a>
 
 </div>
 
@@ -118,7 +232,7 @@ localStorage.setItem("sellerId",data.sellerId);
 localStorage.setItem("sellerName",data.sellerName);
 
 result.innerHTML =
-"✅ Login Successful";
+"<strong>✅ Login Successful</strong><br><br>Redirecting to dashboard...";
 
 setTimeout(()=>{
 window.location.href="activate-warranty.html";
@@ -127,15 +241,16 @@ window.location.href="activate-warranty.html";
 }else{
 
 result.innerHTML =
-"❌ Invalid Seller ID or Password";
+"<strong>❌ Invalid Seller ID or Password</strong>";
 
 }
 
 }catch(error){
 
 document.getElementById("result").style.display="block";
+
 document.getElementById("result").innerHTML =
-"❌ Error connecting server";
+"<strong>❌ Error connecting server</strong>";
 
 }
 
@@ -145,4 +260,3 @@ document.getElementById("result").innerHTML =
 
 </body>
 </html>
-
