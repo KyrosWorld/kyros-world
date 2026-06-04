@@ -46,8 +46,10 @@ font-weight:500;
 transition:0.3s;
 }
 
-nav a:hover{
+nav a.active{
 color:#d4af37;
+border-bottom:2px solid #d4af37;
+padding-bottom:5px;
 }
 
 /* HERO */
