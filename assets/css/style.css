@@ -574,3 +574,42 @@ font-size:14px;
 }
 
 }
+
+.page-header{
+padding:140px 20px 40px;
+text-align:center;
+}
+
+.page-header i{
+font-size:60px;
+color:#d4af37;
+margin-bottom:15px;
+}
+
+.page-header h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.page-header p{
+color:#cbd5e1;
+}
+
+.content{
+max-width:1000px;
+margin:auto;
+padding:20px 30px 80px;
+line-height:1.9;
+color:#d1d5db;
+}
+
+.section-title{
+color:#d4af37;
+margin-top:40px;
+margin-bottom:15px;
+font-size:26px;
+}
+
+.section-title i{
+margin-right:10px;
+}
